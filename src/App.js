@@ -1,18 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {connect} from "react-redux";
 import Counter from "./components/Counter";
 
 function App(props) {
-    const [step, setStep] = useState(0);
-    const [showStep, setShowStep] = useState(false);
-
-    const onAddCounter = () => {
-        if(Number.isInteger(+step)){
-            props.addCounter(+step);
-            setShowStep(false);
-        }
-    }
-
     return (
         <div className="container">
             {
@@ -20,14 +10,9 @@ function App(props) {
                     <Counter key={index} counter={counter}/>
                 )
             }
-            {showStep === true ?
-                <>
-                    <input type="text" onChange={(e) => setStep(e.target.value)}/>
-                    <button onClick={onAddCounter}>Add</button>
-                </>
-                :
-                <button onClick={()=>setShowStep(true)}>+</button>
-            }
+            <div className="row justify-content-md-center p-2">
+                <button className="btn btn-outline-secondary" onClick={()=>props.addCounter()}>Add</button>
+            </div>
         </div>
     );
 }

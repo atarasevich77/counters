@@ -3,8 +3,6 @@ import { v4 as uuidv4 } from 'uuid';
 const initCounters = {
   counters: [
       {id: uuidv4(), count: 0, step: 1},
-      {id: uuidv4(), count: 0, step: 2},
-      {id: uuidv4(), count: 0, step: 3},
   ]
 };
 
@@ -12,8 +10,16 @@ const counters = (state = initCounters, action) => {
     switch (action.type) {
         case 'ADD_COUNTER':
             return {...state,
-                counters: [...state.counters, {id: uuidv4(), count: 0, step: action.payload}]
+                counters: [...state.counters, {id: uuidv4(), count: 0, step: 1}]
             };
+        case 'SET_STEP':
+            const updatedStepCounters = state.counters.map(counter => {
+                if(counter.id === action.payload.id){
+                    return {...counter, step: action.payload.step};
+                }
+                return counter;
+            });
+            return {...state, counters: updatedStepCounters};
         case 'INCREASE_COUNT':
             const increaseCounters = state.counters.map(counter => {
                 if(counter.id === action.payload){
