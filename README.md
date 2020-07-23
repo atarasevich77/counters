@@ -1,4 +1,7 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Url demo version
+https://kano-kenji.github.io/counters/
+
+Use reactJS, Redux
 
 ## Available Scripts
 
