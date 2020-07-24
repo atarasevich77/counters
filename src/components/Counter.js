@@ -2,11 +2,12 @@ import React from 'react';
 import {connect} from "react-redux";
 
 const Counter = (props) => {
+    const counter = props.counter;
 
     const onChangeStep = (e) => {
         const step = +e.target.value
         if(Number.isInteger(step)){
-            props.changeStep({id: props.counter.id, step: step})
+            props.changeStep({id: counter.id, step: step})
         }
     }
 
@@ -14,15 +15,15 @@ const Counter = (props) => {
         <div className="row justify-content-md-center p-2">
             <div className="col-sm-1">
                 <input type="text" className="form-control"
-                       value={props.counter.step}
+                       value={counter.step}
                        onChange={onChangeStep}
                 />
             </div>
-            <button className="btn btn-outline-dark" onClick={()=>props.decreaseCount(props.counter.id)}>-</button>
-            <span className="p-2">{props.counter.count}</span>
-            <button className="btn btn-outline-dark" onClick={()=>props.increaseCount(props.counter.id)}>+</button>
-            <button className="btn btn btn-light ml-1" onClick={()=>props.resetCount(props.counter.id)}>Reset</button>
-            <button className="btn btn btn-light ml-1" onClick={()=>props.deleteCounter(props.counter.id)}>X</button>
+            <button className="btn btn-outline-dark" onClick={()=>props.decreaseCount(counter.id)}>-</button>
+            <span className="p-2">{counter.count}</span>
+            <button className="btn btn-outline-dark" onClick={()=>props.increaseCount(counter.id)}>+</button>
+            <button className="btn btn btn-light ml-1" onClick={()=>props.resetCount(counter.id)}>Reset</button>
+            <button className="btn btn btn-light ml-1" onClick={()=>props.deleteCounter(counter.id)}>X</button>
         </div>
     );
 };
