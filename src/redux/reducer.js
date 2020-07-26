@@ -3,7 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 const initCounters = {
   counters: [
       {id: uuidv4(), count: 0, step: 1},
-  ]
+  ],
+    error: false
 };
 
 const counters = (state = initCounters, action) => {
