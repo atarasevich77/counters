@@ -9,9 +9,14 @@ const initCounters = {
 
 const counters = (state = initCounters, action) => {
     switch (action.type) {
+        case 'HAS_ERROR':
+            return {...state,
+                error: true
+            };
         case 'ADD_COUNTER':
             return {...state,
-                counters: [...state.counters, {id: uuidv4(), count: 0, step: 1}]
+                counters: [...state.counters, {id: uuidv4(), count: 0, step: 1}],
+                error: false
             };
         case 'SET_STEP':
             const updatedStepCounters = state.counters.map(counter => {
