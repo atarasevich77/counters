@@ -4,8 +4,8 @@ import {connect} from "react-redux";
 const Counter = (props) => {
     const counter = props.counter;
 
-    const onChangeStep = (e) => {
-        const step = +e.target.value
+    const onChangeStep = (event) => {
+        const step = +event.target.value
         if(Number.isInteger(step)){
             props.changeStep({id: counter.id, step: step})
         }
